@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>650</width>
+    <height>474</height>
+   </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>650</width>
+    <height>474</height>
+   </size>
+  </property>
+  <property name="font">
+   <font>
+    <family>Ubuntu</family>
+    <pointsize>12</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Карточки: редактор карточек</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>icon.png</normaloff>icon.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+	background-color: #323232;
+}
+
+QPushButton#addNewCardPB {
+	background-color: green;
+	color: white;
+}
+
+QPushButton#rmSelCardPB {
+	background-color: red;
+	color: white;
+}
+
+QLabel#frontSideCaptLabel,QLabel#descCaptLabel,QLabel#backSideCaptLabel {
+	color: white;
+}
+
+QLabel#pictureCaptLabel {
+	color: white;
+}
+
+QLineEdit#frontSideLineEditBox,QPlainTextEdit#descTextEditBox,QLineEdit#backSideTextEditBox {
+	background-color: white;
+	color: black;
+}
+
+QPushButton#browsePB {
+	background-color: blue;
+	color: white;
+}
+
+QLineEdit#picturePathTextBox,QLineEdit#cardFileNameBox {
+	background-color: white;
+	color: black;
+}
+
+QPushButton#saveCardPB {
+	background-color: green;
+	color: white;
+}
+
+QPushButton#editPB {
+	background-color: blue;
+	color: white;
+}
+
+QListView {
+	color: white;
+}
+
+QLabel#fileNameLabel,QLabel#cardExtLabel {
+	color: white;
+}
+
+QLabel#mainCaptionLabel {
+	color: white;
+}
+
+QPushButton {
+	color: white;
+}</string>
+  </property>
+  <property name="locale">
+   <locale language="Russian" country="Russia"/>
+  </property>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>651</width>
+     <height>8</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(76, 202, 18);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="editingLabel">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>50</y>
+     <width>611</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: white;</string>
+   </property>
+   <property name="text">
+    <string>Редактируется:</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>432</y>
+     <width>221</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QPushButton" name="rmSelCardPB">
+      <property name="font">
+       <font>
+        <family>Ubuntu</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Удалить</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QPushButton" name="editPB">
+      <property name="font">
+       <font>
+        <family>Ubuntu</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Изменить</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="frontSideCaptLabel">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>80</y>
+     <width>271</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Вопрос карточки:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="frontSideLineEditBox">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>110</y>
+     <width>371</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="descCaptLabel">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>140</y>
+     <width>271</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="toolTip">
+    <string extracomment="Описание карточки - это то, что будет отображаться под вопросом карточки. Туда можно написать, что конкретно нужно ответить. Пример: Передняя сторона: Великая Отечественная Война, Описание: Годы?"/>
+   </property>
+   <property name="text">
+    <string>Описание карточки:</string>
+   </property>
+  </widget>
+  <widget class="QPlainTextEdit" name="descTextEditBox">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>170</y>
+     <width>371</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string extracomment="Описание карточки - это то, что будет отображаться под вопросом карточки. Туда можно написать, что конкретно нужно ответить. Пример: Передняя сторона: Великая Отечественная Война, Описание: Годы?"/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="backSideCaptLabel">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>270</y>
+     <width>271</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Задняя сторона карточки:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="backSideTextEditBox">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>294</y>
+     <width>371</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="pictureCaptLabel">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>323</y>
+     <width>271</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Картинка</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="picturePathTextBox">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>350</y>
+     <width>231</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="browsePB">
+   <property name="geometry">
+    <rect>
+     <x>491</x>
+     <y>350</y>
+     <width>131</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Обзор...</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="saveCardPB">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>435</y>
+     <width>191</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Добавить / Сохранить</string>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="cardsList">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>80</y>
+     <width>221</width>
+     <height>341</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLabel" name="fileNameLabel">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>377</y>
+     <width>361</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Имя файла карточки (только латинские буквы)</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="cardFileNameBox">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>402</y>
+     <width>301</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="maxLength">
+    <number>32</number>
+   </property>
+   <property name="readOnly">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="cardExtLabel">
+   <property name="geometry">
+    <rect>
+     <x>559</x>
+     <y>401</y>
+     <width>51</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>.card</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="mainCaptionLabel">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>12</y>
+     <width>311</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string>Карточки: редактор карточек</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="goHomePB">
+   <property name="geometry">
+    <rect>
+     <x>452</x>
+     <y>19</y>
+     <width>181</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Ubuntu</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Главное меню</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
